@@ -1,5 +1,6 @@
 package ir.melkban24.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -30,17 +31,28 @@ public class Agency
      +------------+---------------+------+-----+---------+-------+
      */
     @Id
+    @Column(name = "IdAgency")
     private String idAgency;
+    @Column(name = "NameAgency")
     private String nameAgency;
+    @Column(name = "Tel1")
     private String tel1;
+    @Column(name = "Tel2")
     private String tel2;
+    @Column(name = "Moblie")
     private String mobile;
+    @Column(name = "Adresss")
     private String address;
+    @Column(name = "Pic1")
     private String pic1;
+    @Column(name = "pic2")
     private String pic2;
+    @Column(name = "Pass")
     private String pass;
-    private double countUsers;
-    private double intDateOk;
+    @Column(name = "CountUsers")
+    private long countUsers;
+    @Column(name = "IntDateOk")
+    private long intDateOk;
 
     public String getIdAgency() {
         return idAgency;
@@ -118,7 +130,7 @@ public class Agency
         return countUsers;
     }
 
-    public void setCountUsers(double countUsers) {
+    public void setCountUsers(long countUsers) {
         this.countUsers = countUsers;
     }
 
@@ -126,7 +138,7 @@ public class Agency
         return intDateOk;
     }
 
-    public void setIntDateOk(double intDateOk) {
+    public void setIntDateOk(long intDateOk) {
         this.intDateOk = intDateOk;
     }
 }
