@@ -2,6 +2,7 @@ package ir.melkban24.controller;
 
 import ir.melkban24.model.Agency;
 import ir.melkban24.service.AgencyService;
+import ir.melkban24.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,10 @@ import java.util.List;
 public class AgencyController {
     @Autowired
     private AgencyService agencyService;
+
+    @Autowired
+    private StorageService storageService;
+
     @RequestMapping(value = "/agency/list",method = RequestMethod.GET)
     public List<Agency> agencyList() {
         return agencyService.findAll();
@@ -36,6 +41,7 @@ public class AgencyController {
         for(String multipartFile:requestKeys) {
             originalFileName.add(request.getFile(multipartFile).getOriginalFilename());
         }
+        storageService.store(pic1File);
         return new ResponseEntity<List<String>>(originalFileName, HttpStatus.CREATED);
     }
 }
