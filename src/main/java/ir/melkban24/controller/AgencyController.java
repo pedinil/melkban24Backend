@@ -44,4 +44,5 @@ public class AgencyController {
         storageService.store(pic1File);
         return new ResponseEntity<List<String>>(originalFileName, HttpStatus.CREATED);
     }
+
 }
