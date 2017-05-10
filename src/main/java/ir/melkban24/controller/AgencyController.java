@@ -3,6 +3,8 @@ package ir.melkban24.controller;
 import ir.melkban24.model.Agency;
 import ir.melkban24.service.AgencyService;
 import ir.melkban24.storage.StorageService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,7 @@ import java.util.List;
  */
 @RestController
 public class AgencyController {
+    private static final Logger logger= LoggerFactory.getLogger(AgencyController.class);
     @Autowired
     private AgencyService agencyService;
 
@@ -27,6 +30,7 @@ public class AgencyController {
 
     @RequestMapping(value = "/agency/list",method = RequestMethod.GET)
     public List<Agency> agencyList() {
+        logger.debug("getting agency list");
         return agencyService.findAll();
     }
     @RequestMapping(value = "/agency/create", method = RequestMethod.POST, consumes = "multipart/form-data")
