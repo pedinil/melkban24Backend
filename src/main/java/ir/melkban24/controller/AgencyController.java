@@ -6,6 +6,8 @@ import ir.melkban24.storage.StorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,10 +31,11 @@ public class AgencyController {
     private StorageService storageService;
 
     @RequestMapping(value = "/agency/list",method = RequestMethod.GET)
-    public List<Agency> agencyList() {
-        logger.debug("getting agency list");
-        return agencyService.findAll();
+    public Page<Agency> list(Pageable pageable) {
+        Page<Agency> agencies=agencyService.listAllByPage(pageable);
+        return agencies;
     }
+    
     @RequestMapping(value = "/agency/create", method = RequestMethod.POST, consumes = "multipart/form-data")
     public ResponseEntity<List<String>> createAgency(
             @RequestParam(value = "username", required = true) String username,
