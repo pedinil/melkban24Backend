@@ -11,20 +11,15 @@ import java.util.Set;
 @Entity
 @Table(name="user")
 public class User {
-/**
- *
- +----------+--------------+------+-----+---------+----------------+
- | Field    | Type         | Null | Key | Default | Extra          |
- +----------+--------------+------+-----+---------+----------------+
- | id       | int(11)      | NO   | PRI | NULL    | auto_increment |
- | username | varchar(255) | YES  |     | NULL    |                |
- | password | varchar(255) | YES  |     | NULL    |                |
- +----------+--------------+------+-----+---------+----------------+
- */
+
     private Long id;
     private String username;
     private String password;
+    private String email;
+    private UserModelStatus status;
     private Set<Role> roles;
+    //private Agent agent;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
@@ -50,6 +45,23 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    @Enumerated(EnumType.ORDINAL)
+    public UserModelStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(UserModelStatus status) {
+        this.status = status;
+    }
+
     //@JsonIgnore
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -60,4 +72,17 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+    /*
+    @JsonIgnore
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+    */
 }

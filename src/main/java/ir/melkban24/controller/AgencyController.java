@@ -1,7 +1,10 @@
 package ir.melkban24.controller;
 
 import ir.melkban24.model.Agency;
+import ir.melkban24.model.Agent;
+import ir.melkban24.model.Role;
 import ir.melkban24.service.AgencyService;
+import ir.melkban24.service.AgentService;
 import ir.melkban24.storage.StorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.xml.ws.Response;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,12 +34,15 @@ public class AgencyController {
     @Autowired
     private StorageService storageService;
 
+    @Autowired
+    private AgentService agentService;
+
     @RequestMapping(value = "/agency/list",method = RequestMethod.GET)
     public Page<Agency> list(Pageable pageable) {
         Page<Agency> agencies=agencyService.listAllByPage(pageable);
         return agencies;
     }
-    
+
     @RequestMapping(value = "/agency/create", method = RequestMethod.POST, consumes = "multipart/form-data")
     public ResponseEntity<List<String>> createAgency(
             @RequestParam(value = "username", required = true) String username,
@@ -51,5 +58,4 @@ public class AgencyController {
         storageService.store(pic1File);
         return new ResponseEntity<List<String>>(originalFileName, HttpStatus.CREATED);
     }
-
 }
