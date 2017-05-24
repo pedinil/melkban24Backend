@@ -31,7 +31,7 @@ public class AgentController {
      * @param pageable
      * @return
      */
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
     @RequestMapping(value = "/agent/list", method = RequestMethod.GET)
     public Page<Agent> getList(Pageable pageable) {
         Page<Agent> agents=this.agentService.findAllByPage(pageable);
@@ -43,7 +43,7 @@ public class AgentController {
      * @param id
      * @return
      */
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
     @RequestMapping(value = "/agent/{id}", method = RequestMethod.GET)
     public ResponseEntity<Agent> getAgent(@PathVariable Long id) {
         Agent agent=this.agentService.findByAgentId(id);
