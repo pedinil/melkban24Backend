@@ -38,6 +38,7 @@ public class User {
         this.username = username;
     }
 
+    //@JsonIgnore
     public String getPassword() {
         return password;
     }

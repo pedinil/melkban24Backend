@@ -1,6 +1,8 @@
 package ir.melkban24.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,7 +21,7 @@ import java.util.Collections;
  * Created by mehdi on 5/2/17.
  */
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
-
+    private static final Logger logger= LoggerFactory.getLogger(JWTLoginFilter.class);
     public JWTLoginFilter(String url, AuthenticationManager authManager) {
         super(new AntPathRequestMatcher(url));
         setAuthenticationManager(authManager);
@@ -34,6 +36,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        TokenAuthenticationService.addAuthentication(response,authResult.getName());
+        logger.info("Authentication result : {} ",authResult.getAuthorities());
+        TokenAuthenticationService.addAuthentication(response,authResult.getName(),authResult.getAuthorities());
     }
 }

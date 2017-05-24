@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -31,6 +31,7 @@ public class AgentController {
      * @param pageable
      * @return
      */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/agent/list", method = RequestMethod.GET)
     public Page<Agent> getList(Pageable pageable) {
         Page<Agent> agents=this.agentService.findAllByPage(pageable);
@@ -42,12 +43,13 @@ public class AgentController {
      * @param id
      * @return
      */
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/agent/{id}", method = RequestMethod.GET)
     public ResponseEntity<Agent> getAgent(@PathVariable Long id) {
         Agent agent=this.agentService.findByAgentId(id);
         if(agent==null)
             return new ResponseEntity<Agent>(HttpStatus.NO_CONTENT);
-        return new ResponseEntity<Agent>(this.agentService.findByAgentId(id),HttpStatus.FOUND);
+        return new ResponseEntity<Agent>(agent,HttpStatus.OK);
     }
 
     /**
