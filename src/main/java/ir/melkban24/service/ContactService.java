@@ -10,4 +10,6 @@ import java.util.List;
 
 public interface ContactService {
     List<Contact> findAll();
+    Contact findByContactId(Long id);
+    void save(Contact contact);
 }

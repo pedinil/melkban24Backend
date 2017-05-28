@@ -5,6 +5,7 @@ import ir.melkban24.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -18,5 +19,16 @@ public class ContactServiceImpl implements ContactService{
     @Override
     public List<Contact> findAll() {
         return this.contactRepository.findAll();
+    }
+
+    @Override
+    public Contact findByContactId(Long id) {
+        return this.contactRepository.findOne(id);
+    }
+
+    @Override
+    @Transactional
+    public void save(Contact contact) {
+        this.contactRepository.save(contact);
     }
 }

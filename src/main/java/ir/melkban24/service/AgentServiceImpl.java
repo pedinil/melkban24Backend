@@ -54,4 +54,9 @@ public class AgentServiceImpl implements AgentService{
     public void update(Agent agent) {
         this.agentRepository.save(agent);
     }
+
+    @Override
+    public Agent findByAgentUsername(String username) {
+        return this.agentRepository.findAgentByUsername(username);
+    }
 }

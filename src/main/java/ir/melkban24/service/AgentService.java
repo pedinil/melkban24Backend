@@ -16,4 +16,5 @@ public interface AgentService {
     void save(Agent agent);
     void delete(Agent agent);
     void update(Agent agent);
+    Agent findByAgentUsername(String username);
 }

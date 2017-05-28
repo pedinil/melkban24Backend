@@ -1,6 +1,8 @@
 package ir.melkban24.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -44,13 +46,13 @@ public class ContactItem {
         this.value = value;
     }
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "contact_id")
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "contact_contact_id")
     public Contact getContact() {
         return contact;
     }
-
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public void setContact(Contact contact) {
         this.contact = contact;
     }

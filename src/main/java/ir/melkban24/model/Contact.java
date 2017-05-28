@@ -1,6 +1,7 @@
 package ir.melkban24.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -22,7 +23,7 @@ public class Contact {
     private Set<ContactItem> contactItems;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contact_id")
     public Long getId() {
         return id;
@@ -91,7 +92,8 @@ public class Contact {
         this.zipcode = zipcode;
     }
 
-    @OneToMany(mappedBy = "contact",cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "contact",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     public Set<ContactItem> getContactItems() {
         return contactItems;
     }
