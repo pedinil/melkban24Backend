@@ -4,10 +4,7 @@ package ir.melkban24.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 @Table(name="TblNews")
@@ -15,74 +12,80 @@ public class News {
 	
 	
 	@Id
-	private Double IdNews;
+	private Double idNews;
 
-	private String DateNews;
+	private String dateNews;
 	
-	private String AbsNews;
+	private String absNews;
 	
-	private String SubjectNews;
+	private String subjectNews;
 	
-	private String BodyNews;
+	private String bodyNews;
 	
-	private String ImageNews;
+	private String imageNews;
 	
 	
 	
 
 	
 	public Double getIdNews() {
-		return IdNews;
+		return idNews;
 	}
 
 	public void setIdNews(Double idNews) {
-		IdNews = idNews;
+		this.idNews = idNews;
 	}
 
+	
 	public String getDateNews() {
-		return DateNews;
+		return dateNews;
 	}
 
 	public void setDateNews(String dateNews) {
-		DateNews = dateNews;
+		this.dateNews = dateNews;
 	}
 
+	@JsonIgnore
 	public String getAbsNews() {
-		return AbsNews;
+		return absNews;
 	}
 
+	
 	public void setAbsNews(String absNews) {
-		AbsNews = absNews;
+		this.absNews = absNews;
 	}
 
+	
 	public String getSubjectNews() {
-		return SubjectNews;
+		return subjectNews;
 	}
 
+	
 	public void setSubjectNews(String subjectNews) {
-		SubjectNews = subjectNews;
+		this.subjectNews = subjectNews;
 	}
 
+	@JsonIgnore
 	public String getBodyNews() {
-		return BodyNews;
+		return bodyNews;
 	}
 
 	public void setBodyNews(String bodyNews) {
-		BodyNews = bodyNews;
+		this.bodyNews = bodyNews;
 	}
 
 	public String getImageNews() {
-		return ImageNews;
+		return imageNews;
 	}
 
 	public void setImageNews(String imageNews) {
-		ImageNews = imageNews;
+		this.imageNews = imageNews;
 	}
 
 	@Transient
 	public String getURL()
 	{
-		return SubjectNews.replace(" ", "-");
+		return subjectNews.replace(" ", "-");
 		
 	}
 	
@@ -90,9 +93,9 @@ public class News {
 	public String getThImagenews() {
 		 
 		String thImagenews="";
-		if (ImageNews !=null)
+		if (imageNews !=null)
 		  {
-			thImagenews =ImageNews.replace("News", "th-News").replace("http://melkban24.ir", "");
+			thImagenews =imageNews.replace("News", "th-News").replace("http://melkban24.ir", "");
 		  }
 		return thImagenews;
 	}
@@ -103,9 +106,9 @@ public class News {
 	public String getNewBodyNOhtml()
 	{
 		String NewBodyNOhtml="";
-		if (BodyNews !=null)
+		if (bodyNews !=null)
 		  {
-			NewBodyNOhtml =BodyNews.replaceAll("\\<.*?>","");
+			NewBodyNOhtml =bodyNews.replaceAll("\\<.*?>","");
 			if (NewBodyNOhtml.length()>400)
 			{
 				NewBodyNOhtml=NewBodyNOhtml.substring(0, 400);
@@ -122,7 +125,7 @@ public class News {
 	
 	@Override
 	public String toString(){
-		return "id="+IdNews+", DateNews="+DateNews+", SubjectNews="+SubjectNews+"ImageNews="+ImageNews;
+		return "id="+idNews+", DateNews="+dateNews+", SubjectNews="+subjectNews+"ImageNews="+imageNews;
 	}
 	
 	

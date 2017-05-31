@@ -14,6 +14,6 @@ import ir.melkban24.model.News;
  */
 public interface NewsRepository extends JpaRepository<News,Double> {
 	
-
+	public Page<News> findAllByOrderByIdNewsDesc(Pageable pageable);
 
 }

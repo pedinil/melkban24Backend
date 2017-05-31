@@ -37,9 +37,8 @@ public class KnowServiceImpl implements KnowService {
     public Page<Know> listAllByPage(Pageable pageable) {
     	
 
-   	 PageRequest request =
-   	            new PageRequest(pageable.getPageNumber(), 20, Sort.Direction.DESC, "idKnow");
+
     	
-        return knowRepository.findAll(request);
+        return knowRepository.findAllByOrderByIdKnowDesc(pageable);
     }
 }

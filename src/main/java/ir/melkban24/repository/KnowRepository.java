@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface KnowRepository extends JpaRepository<Know,Double> {
 	
-	 
+	 public Page<Know> findAllByOrderByIdKnowDesc(Pageable pageable);
 	 
 	 
 }

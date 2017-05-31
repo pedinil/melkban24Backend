@@ -30,6 +30,6 @@ public class NewsServiceImpl implements NewsService {
     
     @Override
     public Page<News> listAllByPage(Pageable pageable) {
-        return newsRepository.findAll(pageable);
+        return newsRepository.findAllByOrderByIdNewsDesc(pageable);
     }
 }
