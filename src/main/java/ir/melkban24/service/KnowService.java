@@ -17,4 +17,6 @@ public interface KnowService {
     Know findByIdKnow(double IdKnow);
     
     Page<Know> listAllByPage(Pageable pageable);
+    
+    
 }

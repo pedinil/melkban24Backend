@@ -37,8 +37,8 @@ public class KnowServiceImpl implements KnowService {
     public Page<Know> listAllByPage(Pageable pageable) {
     	
 
-
+    	//return knowRepository.findCByOrderByIdKnowDesc(pageable);
     	
-        return knowRepository.findAllByOrderByIdKnowDesc(pageable);
+    	return knowRepository.findAllByOrderByIdKnowDesc(pageable);
     }
 }

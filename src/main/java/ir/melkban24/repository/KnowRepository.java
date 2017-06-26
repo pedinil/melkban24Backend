@@ -7,13 +7,21 @@ import ir.melkban24.model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  * Created by pedi on 3/12/17.
  */
 public interface KnowRepository extends JpaRepository<Know,Double> {
 	
+
 	 public Page<Know> findAllByOrderByIdKnowDesc(Pageable pageable);
 	 
+	 
+	
+	/* @Query(value="SELECT idKnow,SubjectKnow,ImgKnow,CountView FROM TblKnow order by rand() \n#pageable\n",
+			 countQuery = "SELECT count(*) FROM TblKnow" ,
+			 nativeQuery=true) 
+	 public Page<Know> findCByOrderByIdKnowDesc(Pageable pageable);*/
 	 
 }
