@@ -4,6 +4,8 @@ import ir.melkban24.model.Know;
 import ir.melkban24.model.News;
 import ir.melkban24.repository.KnowRepository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,9 +38,20 @@ public class KnowServiceImpl implements KnowService {
     @Override
     public Page<Know> listAllByPage(Pageable pageable) {
     	
-
     	//return knowRepository.findCByOrderByIdKnowDesc(pageable);
     	
+
+    	
+    	//Page<Know> listKnow=knowRepository.findCByOrderByIdKnowDesc(pageable);
+    	
+    	
     	return knowRepository.findAllByOrderByIdKnowDesc(pageable);
+    	
+    	
+    	
     }
+    	
+    	
+    	
+   
 }
