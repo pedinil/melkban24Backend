@@ -15,9 +15,9 @@ public interface RangeService {
 	public Page<Range> listRangeByPage(Pageable pageable);
 	
 /*	public List<Range> listRangeByArea(double IdArea);
-	
-	public Range getRangeId(String RangeName,double IdArea);
 	*/
+	public Range getRangeId(String RangeName,double IdArea);
+	
 
 
 }

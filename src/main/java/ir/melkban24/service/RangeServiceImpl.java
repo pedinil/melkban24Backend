@@ -28,18 +28,15 @@ public class RangeServiceImpl implements RangeService {
 		return rangeRepository.findAll(pageable);
 	}
 
-/*	@Override
-	@Cacheable("listRangeByArea")
-	public List<Range> listRangeByArea(double IdArea) {
-		return this.rangeDAO.listRangeByArea(IdArea);
-	}
+
+
 
 	@Override
-	@Cacheable("getRangeId")
-	public Range getRangeId(String RangeName,double IdArea) {
-		return this.rangeDAO.getRangeId(RangeName,IdArea);
+	public Range getRangeId(String RangeName, double IdArea) {
+		
+		return rangeRepository.findByNameRangeContaining(RangeName, IdArea);
 	}
-	*/
+
 
 
 }

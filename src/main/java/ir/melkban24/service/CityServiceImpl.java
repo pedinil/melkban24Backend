@@ -29,18 +29,15 @@ public class CityServiceImpl implements CityService {
 		return cityRepository.findAll(pageable);
 	}
 
-	
-/*	@Override
-	//@Cacheable("listCityByState")
-	public List<City> listCityByState(double stateId) {
-		return this.cityDAO.listCityByState(stateId);
-	}
+
 
 
 	@Override
-	//@Cacheable("getCityId")
-	public City getCityId(String CityName,double stateId) {
-		return this.cityDAO.getCityId(CityName, stateId);
-	}*/
+	public City getCityId(String CityName, double stateId) {
+		return cityRepository.findByNameCityContaining(CityName, stateId);
+	}
+
+	
+
 
 }

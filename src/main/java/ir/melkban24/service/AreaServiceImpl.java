@@ -27,22 +27,17 @@ public class AreaServiceImpl implements AreaService {
 
 		return areaRepository.findAll(pageable);
 	}
-	
-
-	/*@Override
 
 
-	
+
+
 	@Override
-	@Cacheable("listAreaByCity")
-	public List<Area> listAreaByCity(double IdCity) {
-		return this.areaDAO.listAreaByCity(IdCity);
+	public Area getAreaId(String AreaName, double CityID) {
+		return areaRepository.findByNameRangeContaining(AreaName, CityID);
+		
 	}
+	
 
-	@Override
-	@Cacheable("getAreaId")
-	public Area getAreaId(String AreaName,double CityID) {
-		return this.areaDAO.getAreaId(AreaName,CityID);
-	}*/
+
 
 }

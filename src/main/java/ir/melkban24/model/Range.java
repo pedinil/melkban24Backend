@@ -18,7 +18,7 @@ public class Range {
 	private String NameRange;
 	
 	@Column(name="IdArea")
-	private String IdArea;
+	private Double IdArea;
 
 	public double getIdRange() {
 		return IdRange;
@@ -36,12 +36,12 @@ public class Range {
 		NameRange = nameRange;
 	}
 
-	public String getIdArea() {
+	public Double getIdArea() {
 		return IdArea;
 	}
 
-	public void setIdArea(String idArea) {
-		IdArea = idArea;
+	public void setIdArea(Double idArea) {
+		this.IdArea = idArea;
 	}
 
 

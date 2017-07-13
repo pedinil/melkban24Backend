@@ -16,9 +16,9 @@ public interface StateService {
 	public Page<State> listStateByPage(Pageable pageable);
 	
 /*	public List<Range> listRangeByArea(double IdArea);
-	
-	public Range getRangeId(String RangeName,double IdArea);
 	*/
+	public State getStateId(String StateName);
+	
 
 
 }

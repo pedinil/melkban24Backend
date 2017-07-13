@@ -1,6 +1,7 @@
 package ir.melkban24.service;
 
 import ir.melkban24.model.Case;
+import ir.melkban24.model.CaseSearch;
 import ir.melkban24.model.Know;
 
 
@@ -17,7 +18,7 @@ public interface CaseService {
     
     Case findByIdCase(Double IdCase);
     
-    //Page<Know> listAllByPage(Pageable pageable);
+    Page<CaseSearch> listSearchCaseByString(Pageable pageable,String inputString);
     
     
 }

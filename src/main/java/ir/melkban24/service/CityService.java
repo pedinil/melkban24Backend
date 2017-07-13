@@ -16,7 +16,7 @@ public interface CityService {
 	public Page<City> listCityByPage(Pageable pageable);
 	
 /*	public List<City> listCityByState(double stateId);
-	
-	public City getCityId(String CityName,double stateId);*/
+*/	
+	public City getCityId(String CityName,double stateId);
 
 }

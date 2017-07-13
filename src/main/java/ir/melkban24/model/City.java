@@ -17,8 +17,8 @@ public class City {
 	@Column(name="NameCity")
 	private String NameCity;
 	
-	@Column(name="IdState")
-	private double IdState;
+	
+	private Double idstate;
 	
 	
 	public double getIdCity() {
@@ -37,18 +37,18 @@ public class City {
 		NameCity = nameCity;
 	}
 
-	public double getIdState() {
-		return IdState;
+	public double getidstate() {
+		return idstate;
 	}
 
-	public void setIdState(double idState) {
-		IdState = idState;
+	public void setidstate(double idState) {
+		this.idstate = idState;
 	}
 	
 	
 	@Override
 	public String toString(){
-		return "id="+IdCity+", name="+NameCity+", idState="+IdState;
+		return "id="+IdCity+", name="+NameCity+", idState="+idstate;
 	}
 	
 	

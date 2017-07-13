@@ -30,18 +30,25 @@ public class StateServiceImpl implements StateService {
 		return stateRepository.findAll(pageable);
 	}
 
+
+
+
+	@Override
+	public State getStateId(String StateName) {
+	
+		return this.stateRepository.findByNameStateContaining(StateName);
+	}
+
 /*	@Override
 	@Cacheable("listRangeByArea")
 	public List<Range> listRangeByArea(double IdArea) {
 		return this.rangeDAO.listRangeByArea(IdArea);
 	}
+*/
+	
+	
 
-	@Override
-	@Cacheable("getRangeId")
-	public Range getRangeId(String RangeName,double IdArea) {
-		return this.rangeDAO.getRangeId(RangeName,IdArea);
-	}
-	*/
+	
 
 
 }

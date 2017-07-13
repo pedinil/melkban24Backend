@@ -1,21 +1,20 @@
 package ir.melkban24.controller;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import ir.melkban24.model.Case;
+import ir.melkban24.model.CaseSearch;
+import ir.melkban24.service.CaseService;
 
-import ir.melkban24.model.Range;
-import ir.melkban24.service.RangeService;
 
 
 
@@ -24,37 +23,20 @@ import ir.melkban24.service.RangeService;
 public class MelkSearchController {
 	
 	 @Autowired
-	   private static final Logger logger= LoggerFactory.getLogger(MelkSearchController.class);
+	 private static final Logger logger= LoggerFactory.getLogger(MelkSearchController.class);
 
 	@Autowired	
-	private RangeService rangeService;
+	private CaseService caseService;
 	
 
 
-	@RequestMapping(value = "/main/range/list", method = RequestMethod.GET)
-	public  Page<Range> getListRange(Pageable pageable) {
+	@RequestMapping(value = "/main/case/list/{inputString}", method = RequestMethod.GET)
+	public  Page<CaseSearch> getListSearchCase(Pageable pageable,@PathVariable String inputString) {
 	
-		  Page<Range> rangePage=this.rangeService.listRangeByPage(pageable);
-	        return rangePage;
+		  Page<CaseSearch> casePage=this.caseService.listSearchCaseByString(pageable,inputString);
+	        return casePage;
 	}
 	
 	
-/*	@RequestMapping(value = "/range/json", method = RequestMethod.GET)
-	public  ResponseEntity<List<Range>> getListRange(Model model) {
-	
-		List<Range> f=this.rangeService.listRange();
-		
-		  return new ResponseEntity<List<Range>>(f, HttpStatus.OK);
-	}
-	
-	
- 
-	@RequestMapping(value = "/range/json/{IdArea}", method = RequestMethod.GET)
-	public  ResponseEntity<List<Range>> getListRangeByCity(@PathVariable double IdArea) {
-	
-		List<Range> f=this.rangeService.listRangeByArea(IdArea);
-		
-		  return new ResponseEntity<List<Range>>(f, HttpStatus.OK);
-	}
-	*/
+
 }
