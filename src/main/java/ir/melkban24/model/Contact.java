@@ -34,7 +34,7 @@ public class Contact {
     }
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "owner_id")
     public Agent getAgent() {
         return agent;
