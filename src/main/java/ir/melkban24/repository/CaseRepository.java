@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import ir.melkban24.model.Case;
 import ir.melkban24.model.CaseSearch;
-import ir.melkban24.model.Know;
+
 
 /**
  * Created by pedi on 3/12/17.
