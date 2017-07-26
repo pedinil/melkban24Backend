@@ -24,6 +24,7 @@ public class CityServiceImpl implements CityService {
 	
 	
 	@Override
+	@Cacheable("listCityByState")
 	public Page<City> listCityByPage(Pageable pageable) {
 
 		return cityRepository.findAll(pageable);
@@ -33,6 +34,7 @@ public class CityServiceImpl implements CityService {
 
 
 	@Override
+	@Cacheable("getCityId")
 	public City getCityId(String CityName, double stateId) {
 		return cityRepository.findByNameCityContaining(CityName, stateId);
 	}

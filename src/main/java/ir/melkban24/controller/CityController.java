@@ -27,6 +27,7 @@ import ir.melkban24.service.CityService;
 
 
 @RestController
+@EnableCaching
 public class CityController {
 	
     @Autowired
