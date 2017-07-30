@@ -14,7 +14,7 @@ public class CaseSearch {
 
 	
 	@Column(name="Id")
-	private double Id;
+	private Double Id;
 	
 	
 	

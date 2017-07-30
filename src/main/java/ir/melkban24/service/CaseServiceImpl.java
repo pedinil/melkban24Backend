@@ -14,6 +14,7 @@ import ir.melkban24.model.State;
 import ir.melkban24.repository.CaseRepository;
 
 
+import ir.melkban24.repository.CaseSearchRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.Pageable;
 
+import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
 
 
@@ -39,6 +41,9 @@ public class CaseServiceImpl implements CaseService {
 
     @Autowired
     private CaseRepository caseRepository;
+
+    @Autowired
+    private CaseSearchRepository caseSearchRepository;
 
     @Autowired
 	private StateService stateService;
@@ -82,10 +87,11 @@ public class CaseServiceImpl implements CaseService {
 	
 	@Override
 	public Page<CaseSearch> listSearchCaseByString(Pageable pageable,CaseAdSearch caseAdSearch) {
-		
-	  Case objecCase=SearchContent(caseAdSearch);
-		
-		return this.caseRepository.findByCaseSearchOrderDesc(pageable);
+    	CaseSpecification csKind=new CaseSpecification(new SearchCriteria("KindCase",":",caseAdSearch.getKindCase()));
+		CaseSpecification csNama=new CaseSpecification(new SearchCriteria("nama",":",caseAdSearch.getNama()));
+		CaseSpecification csCabinet=new CaseSpecification(new SearchCriteria("cabinet","",caseAdSearch.getCabinet()));
+
+		return this.caseSearchRepository.findAll(Specifications.where(csKind).and(csNama).and(csCabinet),pageable);
 	}
 	
 	

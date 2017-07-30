@@ -6,7 +6,7 @@
 	<groupId>ir.melkban24</groupId>
 	<artifactId>agents</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>agents</name>
 	<description>Melkban24 Agents Application</description>
