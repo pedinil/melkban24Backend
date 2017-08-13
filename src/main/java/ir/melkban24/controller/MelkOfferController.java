@@ -25,9 +25,9 @@ import org.springframework.web.util.UriComponentsBuilder;
  * Created by pedi on 5/27/17.
  */
 @RestController
-public class CaseController {
+public class MelkOfferController {
     @Autowired
-    private static final Logger logger= LoggerFactory.getLogger(CaseController.class);
+    private static final Logger logger= LoggerFactory.getLogger(MelkOfferController.class);
 
     @Autowired
     private CaseService caseService;
@@ -37,7 +37,7 @@ public class CaseController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/main/case/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/main/melkoffer/{id}", method = RequestMethod.GET)
     public ResponseEntity<Case> getCase(@PathVariable double id) {
     	
     	Case caseObj = this.caseService.findByIdCase(id);
