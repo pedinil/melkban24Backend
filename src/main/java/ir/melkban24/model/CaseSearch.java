@@ -12,12 +12,11 @@ import javax.persistence.Transient;
 @Table(name="TblCase")
 public class CaseSearch {
 
+	@Id
+	private Double id;
+
 	
-	@Column(name="Id")
-	private Double Id;
-	
-	
-	
+
 
 	@Column(name="Metraj")
 	private double Metraj;
@@ -87,9 +86,10 @@ public class CaseSearch {
 	private boolean Pool;
 
 	@Column(name="intDayOn")
-	private double intDayOn;
+	private Double intdayon;
 	
-	
+
+
 	@ManyToOne
     @JoinColumn(name = "IdKindRequest")
 	private KindRequest kindRequest;
@@ -140,19 +140,20 @@ public class CaseSearch {
 	@Column(name="DateIn")
 	private String DateIn;
 	
-	@Id
+	
 	@Column(name="IdCase")
 	private double IdCase;
 	
 	
 	
-	public double getId() {
-		return Id;
+	public Double getId() {
+		return id;
 	}
 
-	public void setId(double id) {
-		Id = id;
+	public void setId(Double id) {
+		this.id = id;
 	}
+
 	
 	public double getIdCase() {
 		return IdCase;
@@ -257,13 +258,7 @@ public class CaseSearch {
 		Confine = confine;
 	}
 
-	public double getIntDayOn() {
-		return intDayOn;
-	}
 
-	public void setIntDayOn(double intDayOn) {
-		this.intDayOn = intDayOn;
-	}
 	
 	public KindRequest getKindRequest() {
 		return kindRequest;
@@ -425,9 +420,18 @@ public class CaseSearch {
 		this.cabinet = cabinet;
 	}
 	
+	
+	public Double getIntdayon() {
+		return intdayon;
+	}
+
+	public void setIntdayon(Double intdayon) {
+		this.intdayon = intdayon;
+	}
+	
 	@Override
 	public String toString(){
-		return "caseID="+IdCase+", Price1="+Price1+", Price2="+Price2+",intDayOn="+intDayOn +",dateIn="+DateIn ;
+		return "caseID="+IdCase+", Price1="+Price1+", Price2="+Price2+",intDayOn="+intdayon +",dateIn="+DateIn ;
 	}
 	
 	

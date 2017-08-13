@@ -34,6 +34,7 @@ public class StateServiceImpl implements StateService {
 
 
 	@Override
+	@Cacheable("getStateId")
 	public State getStateId(String StateName) {
 	
 		return this.stateRepository.findByNameStateContaining(StateName);

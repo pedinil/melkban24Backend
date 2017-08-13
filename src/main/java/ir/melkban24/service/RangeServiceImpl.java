@@ -36,6 +36,12 @@ public class RangeServiceImpl implements RangeService {
 		
 		return rangeRepository.findByNameRangeContaining(RangeName, IdArea);
 	}
+	
+	@Override
+	public Range getRangeId(String RangeName) {
+		
+		return rangeRepository.findByNameRangeContaining(RangeName);
+	}
 
 
 

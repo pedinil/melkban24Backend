@@ -23,5 +23,8 @@ public interface RangeRepository extends JpaRepository<Range,Double> {
 
 	@Query("Select c from Range c where c.IdArea = :IdArea and c.NameRange like:inputString")
 	Range findByNameRangeContaining(@Param("inputString")String inputString,@Param("IdArea")Double IdArea);
+	
+	@Query("Select c from Range c where c.NameRange like:inputString")
+	Range findByNameRangeContaining(@Param("inputString")String inputString);
 
 }

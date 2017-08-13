@@ -18,6 +18,8 @@ public interface RangeService {
 	*/
 	public Range getRangeId(String RangeName,double IdArea);
 	
+	public Range getRangeId(String RangeName);
+	
 
 
 }

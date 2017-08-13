@@ -30,8 +30,9 @@ public class AreaServiceImpl implements AreaService {
 
 
 
-
+	
 	@Override
+	@Cacheable("getAreaId")
 	public Area getAreaId(String AreaName, double CityID) {
 		return areaRepository.findByNameRangeContaining(AreaName, CityID);
 		

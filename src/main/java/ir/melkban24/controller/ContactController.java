@@ -40,12 +40,12 @@ public class ContactController {
      * @param authentication
      * @return
      */
-    @RequestMapping(value = "/contact/list",method = RequestMethod.GET)
+ /*   @RequestMapping(value = "/contact/list",method = RequestMethod.GET)
     public Page<Contact> getContacts(Pageable pageable,Authentication authentication)
     {
         Agent agent=this.agentService.findByAgentUsername(authentication.getName());
         return this.contactService.findAllByAgent_id(agent.getId(),pageable);
-    }
+    }*/
     /**
      * Get Contact
      * @param id

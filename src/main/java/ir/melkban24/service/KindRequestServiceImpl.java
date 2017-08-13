@@ -20,6 +20,7 @@ public class KindRequestServiceImpl implements KindRequestService{
 
 
 	@Override
+	@Cacheable("getKindRequestId")
 	public KindRequest getKindRequestId(String KindRequestName) {
 		
 		return this.kindrequestRepository.findByNameKindRequestContaining(KindRequestName);
@@ -32,6 +33,10 @@ public class KindRequestServiceImpl implements KindRequestService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	
 
 
 

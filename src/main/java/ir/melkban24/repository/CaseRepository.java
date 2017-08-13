@@ -18,8 +18,6 @@ import ir.melkban24.model.CaseSearch;
 public interface CaseRepository extends JpaRepository<Case,Double>, JpaSpecificationExecutor<Case> {
 	 public Case findByidcase(Double idCase);
  
-	 @Query("SELECT c FROM CaseSearch c")
-	 public Page<CaseSearch> findByCaseSearchOrderDesc(Pageable pageable);
-
+	
 
 }
