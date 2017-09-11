@@ -1,5 +1,7 @@
 package ir.melkban24.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ir.melkban24.model.Case;
 import ir.melkban24.model.CaseAdSearch;
+import ir.melkban24.model.CaseCompare;
 import ir.melkban24.model.CaseSearch;
 import ir.melkban24.model.Contact;
 import ir.melkban24.service.CaseService;
@@ -25,10 +28,10 @@ import ir.melkban24.service.CaseService;
 
 
 @RestController
-public class MelkSearchController {
+public class MelkSpecialController {
 	
 	 @Autowired
-	 private static final Logger logger= LoggerFactory.getLogger(MelkSearchController.class);
+	 private static final Logger logger= LoggerFactory.getLogger(MelkSpecialController.class);
 
 	@Autowired	
 	private CaseService caseService;
@@ -38,35 +41,17 @@ public class MelkSearchController {
 
 	
 	
-	  @RequestMapping(value = "/main/case/melksearch", method = RequestMethod.POST)
-	    public Page<CaseSearch> getListSearchCaseAd(Pageable pageable,@RequestBody CaseAdSearch caseAdSearch)
+	  @RequestMapping(value = "/main/melkspecial/list", method = RequestMethod.GET)
+	    public Page<CaseSearch> getListMelkSpecial(Pageable pageable)
 	    {
-	
-		  if (caseAdSearch==null)
-		  {
-			  return (Page<CaseSearch>) new ResponseEntity(HttpStatus.NO_CONTENT);
-		  }
-		  
-		  
-		  Page<CaseSearch> casePage=this.caseService.listSearchCaseByString(pageable,caseAdSearch);
+
+		  Page<CaseSearch> casePage=this.caseService.listRandomSpecialOffer(pageable);
 	        return casePage;
-		  
-		   
+ 
 	    }
 	
 	  
-	  @RequestMapping(value = "/main/case/caseadlist", method = RequestMethod.GET)
-	    public ResponseEntity<CaseAdSearch> getListSearchCaseAd()
-	    {
-		  CaseAdSearch caseAd=new CaseAdSearch();
-		  
-		  
-	        if(caseAd==null)
-	            return new ResponseEntity<CaseAdSearch>(HttpStatus.NO_CONTENT);
-	        return new ResponseEntity<CaseAdSearch>(caseAd,HttpStatus.OK);
-	    	
-		 
-	    }
+	  
 	
 
 }

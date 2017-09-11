@@ -8,6 +8,7 @@ import ir.melkban24.model.CaseSearch;
 import ir.melkban24.model.City;
 import ir.melkban24.model.KindCase;
 import ir.melkban24.model.KindRequest;
+import java.util.List;
 
 import ir.melkban24.model.Range;
 import ir.melkban24.model.State;
@@ -76,12 +77,8 @@ public class CaseServiceImpl implements CaseService {
 
 
 	@Override
-	public Page<CaseSearch> listSearchCaseByString(Pageable pageable, String inputString) {
-		
-		//Case objecCase=SearchContent(inputString);
-		
-		//return this.caseRepository.findByCaseSearchOrderDesc(pageable);
-		return null;
+	public Page<CaseSearch> listRandomSpecialOffer(Pageable pageable) {
+		return caseSearchRepository.findRandamCaseSearch(pageable);
 	}
 	
 	
@@ -406,105 +403,15 @@ public class CaseServiceImpl implements CaseService {
 	}
 
 
-	
+
+
+
+
+
+
 
 	
-	/*private Case SearchContent(String content) {
-		Case caseObj = new Case();
-		
 
-
-		String arrayString[] = content.split("-");
-		String KindRequestName = "";
-		String CaseKindName = "";
-		String StateName = "";
-		String CityName = "";
-		String AreaName = "";
-		String RangeName = "";
-
-		KindRequest kindRequest = null;
-		KindCase kindCase = null;
-		State state = null;
-		City city = null;
-		Area area = null;
-		Range range = null;
-		
-		if (!content.contains("-"))
-		{
-			
-			
-			logger.error("wrong search path " + content);
-			
-			return null;
-		}
-
-		if (arrayString.length >= 1) {
-			KindRequestName = arrayString[0].replace("+", " ");
-			logger.debug("KindRequestName:"+KindRequestName);
-		}
-
-		if (arrayString.length >= 2) {
-			CaseKindName = arrayString[1].replace("+", " ");
-			logger.debug("CaseKindName:"+CaseKindName);
-		}
-
-		if (arrayString.length >= 3) {
-			StateName = arrayString[2].replace("+", " ");
-			logger.debug("StateName:"+StateName);
-		}
-
-		if (arrayString.length >= 4) {
-			CityName = arrayString[3].replace("+", " ");
-			logger.debug("CityName:"+CityName);
-		}
-
-		if (arrayString.length >= 5) {
-			AreaName = arrayString[4].replace("+", " ");
-			logger.debug("AreaName:"+AreaName);
-		}
-
-		if (arrayString.length >= 6) {
-			RangeName = arrayString[5].replace("+", " ");
-			logger.debug("RangeName:"+RangeName);
-		}
-
-		if (!KindRequestName.equals("")) {
-			kindRequest = this.kindRequestService.getKindRequestId(KindRequestName);
-			caseObj.setKindRequest(kindRequest);
-		}
-
-		if (!CaseKindName.equals("")) {
-			kindCase = this.kindCaseService.getKindCaseId(CaseKindName);
-			caseObj.setKindCase(kindCase);
-		}
-
-		if (!StateName.equals("")) {
-			state = this.stateService.getStateId(StateName);
-			caseObj.setState(state);
-		}
-
-		
-		if (!CityName.equals("") && state != null) {
-			city = this.cityService.getCityId(CityName, state.getIdState());
-			caseObj.setCity(city);
-		}
-		
-		if (!AreaName.equals("") && city != null) {
-			area = this.areaService.getAreaId(AreaName, city.getIdCity());
-			caseObj.setArea(area);
-		}
-		
-		if (!RangeName.equals("") && area != null) {
-			range = this.rangeService.getRangeId(RangeName, area.getIdArea());
-			caseObj.setRange(range);
-
-		}
-
-		logger.info("  نوع معامله >" + KindRequestName + ", نوع ملک  >" + CaseKindName + ", استان >" + StateName
-				+ ", شهر >" + CityName + ", منطقه >" + AreaName + ", محدوده >" + RangeName);
-
-		return caseObj;
-
-	}*/
+	
 	
 }

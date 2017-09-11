@@ -5,7 +5,7 @@ import ir.melkban24.model.CaseAdSearch;
 import ir.melkban24.model.CaseSearch;
 import ir.melkban24.model.Know;
 
-
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +19,10 @@ import org.springframework.data.jpa.domain.Specification;
 public interface CaseService {
     Case findByIdCase(Double IdCase);
     
-    Page<CaseSearch> listSearchCaseByString(Pageable pageable,String inputString);
+
+    Page<CaseSearch> listRandomSpecialOffer(Pageable pageable);
     
     Page<CaseSearch> listSearchCaseByString(Pageable pageable,CaseAdSearch caseAdSearch);
+    
+   
 }
