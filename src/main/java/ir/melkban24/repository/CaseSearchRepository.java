@@ -16,7 +16,7 @@ import java.util.List;
 public interface CaseSearchRepository extends JpaRepository<CaseSearch,Double>, JpaSpecificationExecutor<CaseSearch>{
     
 	
-	@Query("select a from CaseSearch a order by RAND()")
+	@Query("select a from CaseSearch a where pic1 like 'http%' order by RAND()")
 	Page<CaseSearch> findRandamCaseSearch(Pageable pageable);
     
     Page<CaseSearch> findAll(Specification<CaseSearch> spec, Pageable pageable);
