@@ -25,4 +25,6 @@ public interface CaseService {
     Page<CaseSearch> listSearchCaseByString(Pageable pageable,CaseAdSearch caseAdSearch);
     
    
+    
+   
 }

@@ -24,7 +24,7 @@ public class CaseSearch {
 
 	@Column(name="Floor")
 	private String Floor;
-	
+
 	
 	@Column(name="Price1")
 	private Double Price1;
