@@ -20,7 +20,7 @@ import java.util.List;
 public interface CaseLocationSearchRepository extends JpaRepository<CaseLocation,Double>, JpaSpecificationExecutor<CaseLocation>{
     
 	
-	@Query("select a from CaseLocation a  where  SQRT(POWER(Lat - :Latinput, 2) + POWER(Lon - :Loninput, 2)) <0.04  ")
+	@Query("select a from CaseLocation a  where  SQRT(POWER(Lat - :Latinput, 2) + POWER(Lon - :Loninput, 2)) <0.01 order by SQRT(POWER(Lat - :Latinput, 2) + POWER(Lon - :Loninput, 2)) desc  ")
 	//@Query("select a from CaseLocation a  where  Lat = :Latinput and Lon = :Loninput ")
 	Page<CaseLocation> findCaseNearByLoc(Pageable pageable,@Param("Latinput")double Latinput,@Param("Loninput")double Loninput);
     
